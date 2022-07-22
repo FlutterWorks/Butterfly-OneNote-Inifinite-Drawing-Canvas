@@ -28,5 +28,3 @@ rm -rf $RPM_BUILD_ROOT
 linux/debian/usr/bin
 
 %changelog
-
-* Read more about it here: https://docs.butterfly.linwood.dev
