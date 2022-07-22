@@ -135,7 +135,7 @@ jobs:
           cp linux/*.deb linwood-butterfly-linux.deb
       - name: Build .rpm executable
         run: |
-          rpmbuild --b linux/butterfly.spec -D rpmbuild
+          rpmbuild -bb linux/butterfly.spec -D rpmbuild
           mv rpmbuild/linwood-butterfly*.rpm linwood-butterfly-linux.rpm
       - name: Build .AppImage executable
         run: |
