@@ -1,4 +1,4 @@
-Name:           Linwood Butterfly
+Name:           butterfly
 Version:        1.4.0-rc.1
 Release:        1%{?dist}
 Summary:        A simple hello world script
