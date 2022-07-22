@@ -1,6 +1,6 @@
 # Butterfly Documentation
 
-Read more [here](../README.md)
+Read more about it [here](../README.md)
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 

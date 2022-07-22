@@ -1,11 +1,11 @@
 # Butterfly App
 
-Read more [here](../README.md)
+Read more it [here](../README.md)
 
 ## Technology
 
 This app was build using flutter.
-Read more about [here](https://flutter.dev).
+Read more it about [here](https://flutter.dev).
 For generating the \*.g.dart and \*.freezed.dart files use the `flutter pub run build_runner build` command.
 
 ## Structure

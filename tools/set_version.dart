@@ -53,6 +53,7 @@ Future<void> main(List<String> args) async {
 
   await updateAppImageVersion(version);
   await updateDebianVersion(version);
+  await updateRpmVersion(version);
   await updateWindowsVersion(version);
   await updateSnapcraftVersion(version);
   if (results['changelog']) {
@@ -119,6 +120,15 @@ Future<void> updateAppData(String version) async {
   lines.insert(41, line);
   await file.writeAsString(lines.join('\n'));
   print('Successfully updated appdata version to $version');
+}
+
+Future<void> updateRpm(String version) async {
+  var file = File('app/linux/butterfly.spec');
+  var line = "Version:        ${version}";
+  var lines = List<String>.from(await file.readAsLines());
+  lines[1] = line;
+  await file.writeAsString(lines.join('\n'));
+  print('Successfully updated rpm version to $version');
 }
 
 Future<void> updateChangelog(String version, String changelog) async {

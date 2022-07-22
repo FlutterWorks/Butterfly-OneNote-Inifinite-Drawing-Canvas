@@ -270,7 +270,7 @@ jobs:
             Download it here: https://docs.butterfly.linwood.dev/downloads
 
             Please note that this is a pre-release version and is not intended for production use.
-            Read more about here: https://docs.butterfly.linwood.dev/nightly
+            Read more about it here: https://docs.butterfly.linwood.dev/nightly
 
   #publish-to-play-store:
   #  runs-on: ubuntu-22.04
