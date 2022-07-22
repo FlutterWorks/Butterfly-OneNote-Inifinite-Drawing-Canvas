@@ -135,6 +135,8 @@ jobs:
           cp linux/*.deb linwood-butterfly-linux.deb
       - name: Build .rpm executable
         run: |
+          sed -i "s:cp -rf :cp -rf $(pwd)/:" linux/rpm/harmonoid.spec
+          mkdir -p rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
           rpmbuild -bb linux/butterfly.spec -D "_topdir $(pwd)/rpmbuild"
           mv rpmbuild/RPMS/x86_64/*.rpm linwood-butterfly-linux.rpm
       - name: Build .AppImage executable

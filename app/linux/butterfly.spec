@@ -18,7 +18,6 @@ Powerful, minimalistic, cross-platform, opensource note-taking app
 %install
 mkdir -p %{buildroot}
 cp -rf linux/debian/usr/ %{buildroot}
-cp -rf linux/debian/usr/bin/ $RPM_BUILD_ROOT/%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
