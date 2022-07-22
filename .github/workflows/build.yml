@@ -138,7 +138,7 @@ jobs:
           sed -i "s:cp -rf :cp -rf $(pwd)/:" linux/butterfly.spec
           mkdir -p rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
           cd linux/debian
-          sed -i "s:FILES_HERE:$(find usr \( -type l -o -type f \) -follow -print | awk '{printf "/%s\\n", $0}'):" ../rpm/harmonoid.spec
+          sed -i "s:FILES_HERE:$(find usr \( -type l -o -type f \) -follow -print | awk '{printf "/%s\\n", $0}'):" ../butterfly.spec
           cd ../../
           rpmbuild -bb linux/butterfly.spec -D "_topdir $(pwd)/rpmbuild"
           mv rpmbuild/RPMS/x86_64/*.rpm linwood-butterfly-linux.rpm
