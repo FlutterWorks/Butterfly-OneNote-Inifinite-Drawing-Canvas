@@ -26,6 +26,8 @@ class _MainViewViewportState extends State<MainViewViewport> {
   GlobalKey paintKey = GlobalKey();
   _MouseState _mouseState = _MouseState.normal;
 
+  Set<int> debugButtons = {};
+
   @override
   void initState() {
     super.initState();
@@ -167,6 +169,7 @@ class _MainViewViewportState extends State<MainViewViewport> {
                 },
                 onPointerDown: (PointerDownEvent event) {
                   cubit.addPointer(event.pointer);
+                  debugButtons.add(event.buttons);
                   final document = state.document;
                   final currentArea = state.currentArea;
                   if (event.buttons == kPrimaryStylusButton) {
@@ -186,6 +189,23 @@ class _MainViewViewportState extends State<MainViewViewport> {
                       .onPointerUp(constraints.biggest, context, event);
                   cubit.resetTemporaryHandler(
                       state.document, state.currentArea);
+                  if (debugButtons.isNotEmpty) {
+                    await showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: const Text('Buttons'),
+                              content: Text(debugButtons.toString()),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: const Text('Close'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            ));
+                    debugButtons.clear();
+                  }
                 },
                 behavior: HitTestBehavior.translucent,
                 onPointerHover: (event) {
