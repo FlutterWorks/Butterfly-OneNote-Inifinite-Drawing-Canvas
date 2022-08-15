@@ -16,7 +16,7 @@ class CameraViewport extends Equatable {
       visibleElements;
   final int? width, height;
   final double pixelRatio;
-  final double scale;
+  final double scale, rotation;
   final double x, y;
 
   const CameraViewport.unbaked(
@@ -25,6 +25,7 @@ class CameraViewport extends Equatable {
       List<Renderer<PadElement>>? visibleElements])
       : image = null,
         scale = 1,
+        rotation = 0,
         width = null,
         height = null,
         bakedElements = const [],
@@ -44,7 +45,8 @@ class CameraViewport extends Equatable {
       required this.visibleElements,
       this.scale = 1,
       this.x = 0,
-      this.y = 0});
+      this.y = 0,
+      this.rotation = 0});
 
   ui.Offset toOffset() => ui.Offset(x, y);
 
@@ -55,7 +57,8 @@ class CameraViewport extends Equatable {
         other.height == height &&
         other.scale == scale &&
         other.x == x &&
-        other.y == y;
+        other.y == y &&
+        other.rotation == rotation;
   }
 
   CameraViewport withUnbaked(List<Renderer<PadElement>> unbakedElements) =>
@@ -71,7 +74,8 @@ class CameraViewport extends Equatable {
           visibleElements: List<Renderer<PadElement>>.from(visibleElements)
             ..addAll(unbakedElements),
           x: x,
-          y: y);
+          y: y,
+          rotation: rotation);
 
   CameraViewport unbake({
     Renderer<Background>? background,
@@ -99,6 +103,7 @@ class CameraViewport extends Equatable {
     double scale = 1,
     double x = 0,
     double y = 0,
+    double rotation = 0,
   }) =>
       CameraViewport.baked(
           background: background,
@@ -111,7 +116,8 @@ class CameraViewport extends Equatable {
           unbakedElements: unbakedElements,
           x: x,
           y: y,
-          visibleElements: visibleElements);
+          visibleElements: visibleElements,
+          rotation: rotation);
 
   withBackground(Renderer<Background> background) => CameraViewport.baked(
       background: background,
@@ -124,7 +130,8 @@ class CameraViewport extends Equatable {
       unbakedElements: unbakedElements,
       x: x,
       y: y,
-      visibleElements: visibleElements);
+      visibleElements: visibleElements,
+      rotation: rotation);
 
   @override
   List<Object?> get props => [
@@ -138,6 +145,7 @@ class CameraViewport extends Equatable {
         x,
         y,
         pixelRatio,
-        visibleElements
+        visibleElements,
+        rotation
       ];
 }

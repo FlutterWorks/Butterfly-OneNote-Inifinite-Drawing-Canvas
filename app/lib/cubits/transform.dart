@@ -6,12 +6,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 @immutable
 class CameraTransform extends Equatable {
   final Offset position;
-  final double size;
+  final double size, rotation;
 
-  const CameraTransform([this.position = Offset.zero, this.size = 1]);
+  const CameraTransform(
+      [this.position = Offset.zero, this.size = 1, this.rotation = 0]);
 
   CameraTransform withPosition(Offset position) =>
-      CameraTransform(position, size);
+      CameraTransform(position, size, rotation);
 
   CameraTransform withSize(double size, [Offset cursor = Offset.zero]) {
     // Set size and focus on cursor if provided
@@ -22,8 +23,12 @@ class CameraTransform extends Equatable {
     return CameraTransform(
       position + (cursor - mx) / newSize,
       newSize,
+      rotation,
     );
   }
+
+  CameraTransform withRotation(double rotation) =>
+      CameraTransform(position, size, rotation);
 
   Offset localToGlobal(Offset local) => local / size - position;
   Offset globalToLocal(Offset global) => (global + position) * size;
@@ -36,7 +41,7 @@ class CameraTransform extends Equatable {
       );
 
   @override
-  List<Object?> get props => [position, size];
+  List<Object?> get props => [position, rotation, size];
 }
 
 class TransformCubit extends Cubit<CameraTransform> {
@@ -59,4 +64,7 @@ class TransformCubit extends Cubit<CameraTransform> {
   void moveToWaypoint(Waypoint waypoint) => emit(state
       .withPosition(waypoint.position)
       .withSize(waypoint.scale ?? state.size));
+
+  void rotate(double rotation, [Offset offset = Offset.zero]) =>
+      emit(state.withRotation(rotation).withPosition(state.position + offset));
 }

@@ -25,6 +25,7 @@ class ForegroundPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     canvas.scale(transform.size);
     canvas.translate(transform.position.dx, transform.position.dy);
+    canvas.rotate(transform.rotation);
     for (var element in renderers) {
       element.build(canvas, size, document, transform, true);
     }
@@ -110,6 +111,7 @@ class ViewPainter extends CustomPainter {
       }
     }
     canvas.scale(transform.size, transform.size);
+    canvas.rotate(transform.rotation);
     canvas.translate(transform.position.dx, transform.position.dy);
     for (var renderer in cameraViewport.unbakedElements) {
       if (!invisibleLayers.contains(renderer.element.layer)) {

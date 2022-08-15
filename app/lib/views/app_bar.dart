@@ -264,12 +264,10 @@ class PadAppBar extends StatelessWidget with PreferredSizeWidget {
 }
 
 class _MainPopupMenu extends StatelessWidget {
-  final TextEditingController _scaleController =
-      TextEditingController(text: '100');
   final GlobalKey viewportKey;
   final bool hideUndoRedo;
 
-  _MainPopupMenu({required this.viewportKey, this.hideUndoRedo = false});
+  const _MainPopupMenu({required this.viewportKey, this.hideUndoRedo = false});
 
   @override
   Widget build(BuildContext context) {
@@ -322,98 +320,78 @@ class _MainPopupMenu extends StatelessWidget {
           PopupMenuItem(
               enabled: false,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: IconTheme(
-                data: Theme.of(context).iconTheme,
-                child: BlocBuilder<TransformCubit, CameraTransform>(
-                    bloc: transformCubit,
-                    builder: (context, transform) {
-                      _scaleController.text =
-                          (transform.size * 100).toStringAsFixed(0);
-                      const zoomConstant = 1 + 0.1;
-                      void bake() {
-                        var size = viewportKey.currentContext?.size;
-                        if (size != null) {
-                          bloc.bake(
-                              viewportSize: size,
-                              pixelRatio:
-                                  MediaQuery.of(context).devicePixelRatio);
+              child: Focus(
+                child: IconTheme(
+                  data: Theme.of(context).iconTheme,
+                  child: BlocBuilder<TransformCubit, CameraTransform>(
+                      bloc: transformCubit,
+                      builder: (context, transform) {
+                        const zoomConstant = 1 + 0.1;
+                        void bake() {
+                          var size = viewportKey.currentContext?.size;
+                          if (size != null) {
+                            bloc.bake(
+                                viewportSize: size,
+                                pixelRatio:
+                                    MediaQuery.of(context).devicePixelRatio);
+                          }
                         }
-                      }
 
-                      return Row(
-                        children: [
-                          IconButton(
-                              icon: const Icon(
-                                  PhosphorIcons.magnifyingGlassMinusLight),
-                              tooltip: AppLocalizations.of(context)!.zoomOut,
-                              onPressed: () {
-                                var viewportSize =
-                                    viewportKey.currentContext?.size ??
-                                        MediaQuery.of(context).size;
-                                transformCubit.zoom(
-                                    1 / zoomConstant,
-                                    Offset(viewportSize.width / 2,
-                                        viewportSize.height / 2));
-                                bake();
-                              }),
-                          IconButton(
-                              icon: const Icon(
-                                  PhosphorIcons.magnifyingGlassLight),
-                              tooltip: AppLocalizations.of(context)!.resetZoom,
-                              onPressed: () {
-                                var viewportSize =
-                                    viewportKey.currentContext?.size ??
-                                        MediaQuery.of(context).size;
-                                transformCubit.size(
-                                    1,
-                                    Offset(viewportSize.width / 2,
-                                        viewportSize.height / 2));
-                                bake();
-                              }),
-                          IconButton(
-                              icon: const Icon(
-                                  PhosphorIcons.magnifyingGlassPlusLight),
-                              tooltip: AppLocalizations.of(context)!.zoomIn,
-                              onPressed: () {
-                                var viewportSize =
-                                    viewportKey.currentContext?.size ??
-                                        MediaQuery.of(context).size;
-                                transformCubit.zoom(
-                                    zoomConstant,
-                                    Offset(viewportSize.width / 2,
-                                        viewportSize.height / 2));
-                                bake();
-                              }),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: ConstrainedBox(
-                              constraints: const BoxConstraints(minWidth: 100),
-                              child: TextField(
-                                controller: _scaleController,
-                                onSubmitted: (value) {
-                                  var viewportSize =
-                                      viewportKey.currentContext?.size ??
-                                          MediaQuery.of(context).size;
-                                  var scale = double.tryParse(value) ?? 100;
-                                  scale /= 100;
-                                  transformCubit.size(
-                                      scale,
-                                      Offset(viewportSize.width / 2,
-                                          viewportSize.height / 2));
-                                },
-                                textAlign: TextAlign.center,
-                                decoration: InputDecoration(
-                                    filled: true,
-                                    floatingLabelAlignment:
-                                        FloatingLabelAlignment.center,
-                                    labelText:
-                                        AppLocalizations.of(context)!.zoom),
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    }),
+                        return Column(
+                          children: [
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                      icon: const Icon(PhosphorIcons
+                                          .magnifyingGlassMinusLight),
+                                      tooltip:
+                                          AppLocalizations.of(context)!.zoomOut,
+                                      onPressed: () {
+                                        var viewportSize =
+                                            viewportKey.currentContext?.size ??
+                                                MediaQuery.of(context).size;
+                                        transformCubit.zoom(
+                                            1 / zoomConstant,
+                                            Offset(viewportSize.width / 2,
+                                                viewportSize.height / 2));
+                                        bake();
+                                      }),
+                                  IconButton(
+                                      icon: const Icon(
+                                          PhosphorIcons.magnifyingGlassLight),
+                                      tooltip: AppLocalizations.of(context)!
+                                          .resetZoom,
+                                      onPressed: () {
+                                        var viewportSize =
+                                            viewportKey.currentContext?.size ??
+                                                MediaQuery.of(context).size;
+                                        transformCubit.size(
+                                            1,
+                                            Offset(viewportSize.width / 2,
+                                                viewportSize.height / 2));
+                                        bake();
+                                      }),
+                                  IconButton(
+                                      icon: const Icon(PhosphorIcons
+                                          .magnifyingGlassPlusLight),
+                                      tooltip:
+                                          AppLocalizations.of(context)!.zoomIn,
+                                      onPressed: () {
+                                        var viewportSize =
+                                            viewportKey.currentContext?.size ??
+                                                MediaQuery.of(context).size;
+                                        transformCubit.zoom(
+                                            zoomConstant,
+                                            Offset(viewportSize.width / 2,
+                                                viewportSize.height / 2));
+                                        bake();
+                                      }),
+                                ]),
+                          ],
+                        );
+                      }),
+                ),
               )),
           if (state.location.path != '' && state.embedding == null) ...[
             PopupMenuItem(
