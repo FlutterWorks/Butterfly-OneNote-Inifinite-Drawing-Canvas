@@ -864,26 +864,29 @@ PadElement _$PadElementFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PadElement {
   String get layer => throw _privateConstructorUsedError;
+  double get rotation => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            PenProperty property, double rotation)
         pen,
-    required TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)
         eraser,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             String text,
             LabelProperty property,
-            ElementConstraint constraint)
+            ElementConstraint constraint,
+            double rotation)
         label,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)
         image,
@@ -891,6 +894,7 @@ mixin _$PadElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)
@@ -899,26 +903,33 @@ mixin _$PadElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)
+            ShapeProperty property,
+            double rotation)
         shape,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -926,6 +937,7 @@ mixin _$PadElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -934,26 +946,33 @@ mixin _$PadElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -961,6 +980,7 @@ mixin _$PadElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -969,7 +989,8 @@ mixin _$PadElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
     required TResult orElse(),
   }) =>
@@ -1016,7 +1037,7 @@ abstract class $PadElementCopyWith<$Res> {
   factory $PadElementCopyWith(
           PadElement value, $Res Function(PadElement) then) =
       _$PadElementCopyWithImpl<$Res>;
-  $Res call({String layer});
+  $Res call({String layer, double rotation});
 }
 
 /// @nodoc
@@ -1030,12 +1051,17 @@ class _$PadElementCopyWithImpl<$Res> implements $PadElementCopyWith<$Res> {
   @override
   $Res call({
     Object? layer = freezed,
+    Object? rotation = freezed,
   }) {
     return _then(_value.copyWith(
       layer: layer == freezed
           ? _value.layer
           : layer // ignore: cast_nullable_to_non_nullable
               as String,
+      rotation: rotation == freezed
+          ? _value.rotation
+          : rotation // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -1047,7 +1073,11 @@ abstract class _$$PenElementCopyWith<$Res>
           _$PenElement value, $Res Function(_$PenElement) then) =
       __$$PenElementCopyWithImpl<$Res>;
   @override
-  $Res call({String layer, List<PathPoint> points, PenProperty property});
+  $Res call(
+      {String layer,
+      List<PathPoint> points,
+      PenProperty property,
+      double rotation});
 }
 
 /// @nodoc
@@ -1065,6 +1095,7 @@ class __$$PenElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
     Object? layer = freezed,
     Object? points = freezed,
     Object? property = freezed,
+    Object? rotation = freezed,
   }) {
     return _then(_$PenElement(
       layer: layer == freezed
@@ -1079,6 +1110,10 @@ class __$$PenElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
           ? _value.property
           : property // ignore: cast_nullable_to_non_nullable
               as PenProperty,
+      rotation: rotation == freezed
+          ? _value.rotation
+          : rotation // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -1090,6 +1125,7 @@ class _$PenElement implements PenElement {
       {this.layer = '',
       final List<PathPoint> points = const [],
       this.property = const PenProperty(),
+      this.rotation = 0,
       final String? $type})
       : _points = points,
         $type = $type ?? 'pen';
@@ -1111,13 +1147,16 @@ class _$PenElement implements PenElement {
   @override
   @JsonKey()
   final PenProperty property;
+  @override
+  @JsonKey()
+  final double rotation;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'PadElement.pen(layer: $layer, points: $points, property: $property)';
+    return 'PadElement.pen(layer: $layer, points: $points, property: $property, rotation: $rotation)';
   }
 
   @JsonKey(ignore: true)
@@ -1128,24 +1167,26 @@ class _$PenElement implements PenElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            PenProperty property, double rotation)
         pen,
-    required TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)
         eraser,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             String text,
             LabelProperty property,
-            ElementConstraint constraint)
+            ElementConstraint constraint,
+            double rotation)
         label,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)
         image,
@@ -1153,6 +1194,7 @@ class _$PenElement implements PenElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)
@@ -1161,29 +1203,36 @@ class _$PenElement implements PenElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)
+            ShapeProperty property,
+            double rotation)
         shape,
   }) {
-    return pen(layer, points, property);
+    return pen(layer, points, property, rotation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -1191,6 +1240,7 @@ class _$PenElement implements PenElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -1199,29 +1249,36 @@ class _$PenElement implements PenElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
   }) {
-    return pen?.call(layer, points, property);
+    return pen?.call(layer, points, property, rotation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -1229,6 +1286,7 @@ class _$PenElement implements PenElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -1237,12 +1295,13 @@ class _$PenElement implements PenElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
     required TResult orElse(),
   }) {
     if (pen != null) {
-      return pen(layer, points, property);
+      return pen(layer, points, property, rotation);
     }
     return orElse();
   }
@@ -1302,7 +1361,8 @@ abstract class PenElement implements PadElement, PathElement {
   const factory PenElement(
       {final String layer,
       final List<PathPoint> points,
-      final PenProperty property}) = _$PenElement;
+      final PenProperty property,
+      final double rotation}) = _$PenElement;
 
   factory PenElement.fromJson(Map<String, dynamic> json) =
       _$PenElement.fromJson;
@@ -1311,6 +1371,8 @@ abstract class PenElement implements PadElement, PathElement {
   String get layer;
   List<PathPoint> get points;
   PenProperty get property;
+  @override
+  double get rotation;
   @override
   @JsonKey(ignore: true)
   _$$PenElementCopyWith<_$PenElement> get copyWith =>
@@ -1324,7 +1386,11 @@ abstract class _$$EraserElementCopyWith<$Res>
           _$EraserElement value, $Res Function(_$EraserElement) then) =
       __$$EraserElementCopyWithImpl<$Res>;
   @override
-  $Res call({String layer, List<PathPoint> points, EraserProperty property});
+  $Res call(
+      {String layer,
+      List<PathPoint> points,
+      EraserProperty property,
+      double rotation});
 }
 
 /// @nodoc
@@ -1342,6 +1408,7 @@ class __$$EraserElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
     Object? layer = freezed,
     Object? points = freezed,
     Object? property = freezed,
+    Object? rotation = freezed,
   }) {
     return _then(_$EraserElement(
       layer: layer == freezed
@@ -1356,6 +1423,10 @@ class __$$EraserElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
           ? _value.property
           : property // ignore: cast_nullable_to_non_nullable
               as EraserProperty,
+      rotation: rotation == freezed
+          ? _value.rotation
+          : rotation // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -1367,6 +1438,7 @@ class _$EraserElement implements EraserElement {
       {this.layer = '',
       final List<PathPoint> points = const [],
       this.property = const EraserProperty(),
+      this.rotation = 0,
       final String? $type})
       : _points = points,
         $type = $type ?? 'eraser';
@@ -1388,13 +1460,16 @@ class _$EraserElement implements EraserElement {
   @override
   @JsonKey()
   final EraserProperty property;
+  @override
+  @JsonKey()
+  final double rotation;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'PadElement.eraser(layer: $layer, points: $points, property: $property)';
+    return 'PadElement.eraser(layer: $layer, points: $points, property: $property, rotation: $rotation)';
   }
 
   @JsonKey(ignore: true)
@@ -1405,24 +1480,26 @@ class _$EraserElement implements EraserElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            PenProperty property, double rotation)
         pen,
-    required TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)
         eraser,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             String text,
             LabelProperty property,
-            ElementConstraint constraint)
+            ElementConstraint constraint,
+            double rotation)
         label,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)
         image,
@@ -1430,6 +1507,7 @@ class _$EraserElement implements EraserElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)
@@ -1438,29 +1516,36 @@ class _$EraserElement implements EraserElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)
+            ShapeProperty property,
+            double rotation)
         shape,
   }) {
-    return eraser(layer, points, property);
+    return eraser(layer, points, property, rotation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -1468,6 +1553,7 @@ class _$EraserElement implements EraserElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -1476,29 +1562,36 @@ class _$EraserElement implements EraserElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
   }) {
-    return eraser?.call(layer, points, property);
+    return eraser?.call(layer, points, property, rotation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -1506,6 +1599,7 @@ class _$EraserElement implements EraserElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -1514,12 +1608,13 @@ class _$EraserElement implements EraserElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
     required TResult orElse(),
   }) {
     if (eraser != null) {
-      return eraser(layer, points, property);
+      return eraser(layer, points, property, rotation);
     }
     return orElse();
   }
@@ -1579,7 +1674,8 @@ abstract class EraserElement implements PadElement, PathElement {
   const factory EraserElement(
       {final String layer,
       final List<PathPoint> points,
-      final EraserProperty property}) = _$EraserElement;
+      final EraserProperty property,
+      final double rotation}) = _$EraserElement;
 
   factory EraserElement.fromJson(Map<String, dynamic> json) =
       _$EraserElement.fromJson;
@@ -1588,6 +1684,8 @@ abstract class EraserElement implements PadElement, PathElement {
   String get layer;
   List<PathPoint> get points;
   EraserProperty get property;
+  @override
+  double get rotation;
   @override
   @JsonKey(ignore: true)
   _$$EraserElementCopyWith<_$EraserElement> get copyWith =>
@@ -1606,7 +1704,8 @@ abstract class _$$LabelElementCopyWith<$Res>
       @OffsetJsonConverter() Offset position,
       String text,
       LabelProperty property,
-      ElementConstraint constraint});
+      ElementConstraint constraint,
+      double rotation});
 
   $ElementConstraintCopyWith<$Res> get constraint;
 }
@@ -1628,6 +1727,7 @@ class __$$LabelElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
     Object? text = freezed,
     Object? property = freezed,
     Object? constraint = freezed,
+    Object? rotation = freezed,
   }) {
     return _then(_$LabelElement(
       layer: layer == freezed
@@ -1650,6 +1750,10 @@ class __$$LabelElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
           ? _value.constraint
           : constraint // ignore: cast_nullable_to_non_nullable
               as ElementConstraint,
+      rotation: rotation == freezed
+          ? _value.rotation
+          : rotation // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 
@@ -1670,6 +1774,7 @@ class _$LabelElement implements LabelElement {
       this.text = '',
       this.property = const LabelProperty(),
       this.constraint = const ElementConstraint(size: 1000),
+      this.rotation = 0,
       final String? $type})
       : $type = $type ?? 'label';
 
@@ -1692,13 +1797,16 @@ class _$LabelElement implements LabelElement {
   @override
   @JsonKey()
   final ElementConstraint constraint;
+  @override
+  @JsonKey()
+  final double rotation;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'PadElement.label(layer: $layer, position: $position, text: $text, property: $property, constraint: $constraint)';
+    return 'PadElement.label(layer: $layer, position: $position, text: $text, property: $property, constraint: $constraint, rotation: $rotation)';
   }
 
   @JsonKey(ignore: true)
@@ -1709,24 +1817,26 @@ class _$LabelElement implements LabelElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            PenProperty property, double rotation)
         pen,
-    required TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)
         eraser,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             String text,
             LabelProperty property,
-            ElementConstraint constraint)
+            ElementConstraint constraint,
+            double rotation)
         label,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)
         image,
@@ -1734,6 +1844,7 @@ class _$LabelElement implements LabelElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)
@@ -1742,29 +1853,36 @@ class _$LabelElement implements LabelElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)
+            ShapeProperty property,
+            double rotation)
         shape,
   }) {
-    return label(layer, position, text, property, constraint);
+    return label(layer, position, text, property, constraint, rotation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -1772,6 +1890,7 @@ class _$LabelElement implements LabelElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -1780,29 +1899,36 @@ class _$LabelElement implements LabelElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
   }) {
-    return label?.call(layer, position, text, property, constraint);
+    return label?.call(layer, position, text, property, constraint, rotation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -1810,6 +1936,7 @@ class _$LabelElement implements LabelElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -1818,12 +1945,13 @@ class _$LabelElement implements LabelElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
     required TResult orElse(),
   }) {
     if (label != null) {
-      return label(layer, position, text, property, constraint);
+      return label(layer, position, text, property, constraint, rotation);
     }
     return orElse();
   }
@@ -1885,7 +2013,8 @@ abstract class LabelElement implements PadElement {
       @OffsetJsonConverter() final Offset position,
       final String text,
       final LabelProperty property,
-      final ElementConstraint constraint}) = _$LabelElement;
+      final ElementConstraint constraint,
+      final double rotation}) = _$LabelElement;
 
   factory LabelElement.fromJson(Map<String, dynamic> json) =
       _$LabelElement.fromJson;
@@ -1897,6 +2026,8 @@ abstract class LabelElement implements PadElement {
   String get text;
   LabelProperty get property;
   ElementConstraint get constraint;
+  @override
+  double get rotation;
   @override
   @JsonKey(ignore: true)
   _$$LabelElementCopyWith<_$LabelElement> get copyWith =>
@@ -1915,6 +2046,7 @@ abstract class _$$ImageElementCopyWith<$Res>
       @OffsetJsonConverter() Offset position,
       ElementConstraints? constraints,
       @Uint8ListJsonConverter() Uint8List pixels,
+      double rotation,
       int width,
       int height});
 
@@ -1937,6 +2069,7 @@ class __$$ImageElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
     Object? position = freezed,
     Object? constraints = freezed,
     Object? pixels = freezed,
+    Object? rotation = freezed,
     Object? width = freezed,
     Object? height = freezed,
   }) {
@@ -1957,6 +2090,10 @@ class __$$ImageElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
           ? _value.pixels
           : pixels // ignore: cast_nullable_to_non_nullable
               as Uint8List,
+      rotation: rotation == freezed
+          ? _value.rotation
+          : rotation // ignore: cast_nullable_to_non_nullable
+              as double,
       width: width == freezed
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -1988,6 +2125,7 @@ class _$ImageElement implements ImageElement {
       @OffsetJsonConverter() this.position = Offset.zero,
       this.constraints = const ScaledElementConstraints(1),
       @Uint8ListJsonConverter() required this.pixels,
+      this.rotation = 0,
       required this.width,
       required this.height,
       final String? $type})
@@ -2010,6 +2148,9 @@ class _$ImageElement implements ImageElement {
   @Uint8ListJsonConverter()
   final Uint8List pixels;
   @override
+  @JsonKey()
+  final double rotation;
+  @override
   final int width;
   @override
   final int height;
@@ -2019,7 +2160,7 @@ class _$ImageElement implements ImageElement {
 
   @override
   String toString() {
-    return 'PadElement.image(layer: $layer, position: $position, constraints: $constraints, pixels: $pixels, width: $width, height: $height)';
+    return 'PadElement.image(layer: $layer, position: $position, constraints: $constraints, pixels: $pixels, rotation: $rotation, width: $width, height: $height)';
   }
 
   @JsonKey(ignore: true)
@@ -2030,24 +2171,26 @@ class _$ImageElement implements ImageElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            PenProperty property, double rotation)
         pen,
-    required TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)
         eraser,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             String text,
             LabelProperty property,
-            ElementConstraint constraint)
+            ElementConstraint constraint,
+            double rotation)
         label,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)
         image,
@@ -2055,6 +2198,7 @@ class _$ImageElement implements ImageElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)
@@ -2063,29 +2207,36 @@ class _$ImageElement implements ImageElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)
+            ShapeProperty property,
+            double rotation)
         shape,
   }) {
-    return image(layer, position, constraints, pixels, width, height);
+    return image(layer, position, constraints, pixels, rotation, width, height);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -2093,6 +2244,7 @@ class _$ImageElement implements ImageElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -2101,29 +2253,37 @@ class _$ImageElement implements ImageElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
   }) {
-    return image?.call(layer, position, constraints, pixels, width, height);
+    return image?.call(
+        layer, position, constraints, pixels, rotation, width, height);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -2131,6 +2291,7 @@ class _$ImageElement implements ImageElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -2139,12 +2300,14 @@ class _$ImageElement implements ImageElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
     required TResult orElse(),
   }) {
     if (image != null) {
-      return image(layer, position, constraints, pixels, width, height);
+      return image(
+          layer, position, constraints, pixels, rotation, width, height);
     }
     return orElse();
   }
@@ -2206,6 +2369,7 @@ abstract class ImageElement implements PadElement {
       @OffsetJsonConverter() final Offset position,
       final ElementConstraints? constraints,
       @Uint8ListJsonConverter() required final Uint8List pixels,
+      final double rotation,
       required final int width,
       required final int height}) = _$ImageElement;
 
@@ -2219,6 +2383,8 @@ abstract class ImageElement implements PadElement {
   ElementConstraints? get constraints;
   @Uint8ListJsonConverter()
   Uint8List get pixels;
+  @override
+  double get rotation;
   int get width;
   int get height;
   @override
@@ -2238,6 +2404,7 @@ abstract class _$$SvgElementCopyWith<$Res>
       {String layer,
       @OffsetJsonConverter() Offset position,
       ElementConstraints? constraints,
+      double rotation,
       String data,
       double width,
       double height});
@@ -2260,6 +2427,7 @@ class __$$SvgElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
     Object? layer = freezed,
     Object? position = freezed,
     Object? constraints = freezed,
+    Object? rotation = freezed,
     Object? data = freezed,
     Object? width = freezed,
     Object? height = freezed,
@@ -2277,6 +2445,10 @@ class __$$SvgElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
           ? _value.constraints
           : constraints // ignore: cast_nullable_to_non_nullable
               as ElementConstraints?,
+      rotation: rotation == freezed
+          ? _value.rotation
+          : rotation // ignore: cast_nullable_to_non_nullable
+              as double,
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -2311,6 +2483,7 @@ class _$SvgElement implements SvgElement {
       {this.layer = '',
       @OffsetJsonConverter() this.position = Offset.zero,
       this.constraints = const ScaledElementConstraints(1),
+      this.rotation = 0,
       required this.data,
       required this.width,
       required this.height,
@@ -2331,6 +2504,9 @@ class _$SvgElement implements SvgElement {
   @JsonKey()
   final ElementConstraints? constraints;
   @override
+  @JsonKey()
+  final double rotation;
+  @override
   final String data;
   @override
   final double width;
@@ -2342,7 +2518,7 @@ class _$SvgElement implements SvgElement {
 
   @override
   String toString() {
-    return 'PadElement.svg(layer: $layer, position: $position, constraints: $constraints, data: $data, width: $width, height: $height)';
+    return 'PadElement.svg(layer: $layer, position: $position, constraints: $constraints, rotation: $rotation, data: $data, width: $width, height: $height)';
   }
 
   @JsonKey(ignore: true)
@@ -2353,24 +2529,26 @@ class _$SvgElement implements SvgElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            PenProperty property, double rotation)
         pen,
-    required TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)
         eraser,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             String text,
             LabelProperty property,
-            ElementConstraint constraint)
+            ElementConstraint constraint,
+            double rotation)
         label,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)
         image,
@@ -2378,6 +2556,7 @@ class _$SvgElement implements SvgElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)
@@ -2386,29 +2565,36 @@ class _$SvgElement implements SvgElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)
+            ShapeProperty property,
+            double rotation)
         shape,
   }) {
-    return svg(layer, position, constraints, data, width, height);
+    return svg(layer, position, constraints, rotation, data, width, height);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -2416,6 +2602,7 @@ class _$SvgElement implements SvgElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -2424,29 +2611,37 @@ class _$SvgElement implements SvgElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
   }) {
-    return svg?.call(layer, position, constraints, data, width, height);
+    return svg?.call(
+        layer, position, constraints, rotation, data, width, height);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -2454,6 +2649,7 @@ class _$SvgElement implements SvgElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -2462,12 +2658,13 @@ class _$SvgElement implements SvgElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
     required TResult orElse(),
   }) {
     if (svg != null) {
-      return svg(layer, position, constraints, data, width, height);
+      return svg(layer, position, constraints, rotation, data, width, height);
     }
     return orElse();
   }
@@ -2528,6 +2725,7 @@ abstract class SvgElement implements PadElement {
       {final String layer,
       @OffsetJsonConverter() final Offset position,
       final ElementConstraints? constraints,
+      final double rotation,
       required final String data,
       required final double width,
       required final double height}) = _$SvgElement;
@@ -2540,6 +2738,8 @@ abstract class SvgElement implements PadElement {
   @OffsetJsonConverter()
   Offset get position;
   ElementConstraints? get constraints;
+  @override
+  double get rotation;
   String get data;
   double get width;
   double get height;
@@ -2560,7 +2760,8 @@ abstract class _$$ShapeElementCopyWith<$Res>
       {String layer,
       @OffsetJsonConverter() Offset firstPosition,
       @OffsetJsonConverter() Offset secondPosition,
-      ShapeProperty property});
+      ShapeProperty property,
+      double rotation});
 }
 
 /// @nodoc
@@ -2579,6 +2780,7 @@ class __$$ShapeElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
     Object? firstPosition = freezed,
     Object? secondPosition = freezed,
     Object? property = freezed,
+    Object? rotation = freezed,
   }) {
     return _then(_$ShapeElement(
       layer: layer == freezed
@@ -2597,6 +2799,10 @@ class __$$ShapeElementCopyWithImpl<$Res> extends _$PadElementCopyWithImpl<$Res>
           ? _value.property
           : property // ignore: cast_nullable_to_non_nullable
               as ShapeProperty,
+      rotation: rotation == freezed
+          ? _value.rotation
+          : rotation // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -2609,6 +2815,7 @@ class _$ShapeElement implements ShapeElement {
       @OffsetJsonConverter() this.firstPosition = Offset.zero,
       @OffsetJsonConverter() this.secondPosition = Offset.zero,
       this.property = const ShapeProperty(shape: RectangleShape()),
+      this.rotation = 0,
       final String? $type})
       : $type = $type ?? 'shape';
 
@@ -2629,13 +2836,16 @@ class _$ShapeElement implements ShapeElement {
   @override
   @JsonKey()
   final ShapeProperty property;
+  @override
+  @JsonKey()
+  final double rotation;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'PadElement.shape(layer: $layer, firstPosition: $firstPosition, secondPosition: $secondPosition, property: $property)';
+    return 'PadElement.shape(layer: $layer, firstPosition: $firstPosition, secondPosition: $secondPosition, property: $property, rotation: $rotation)';
   }
 
   @JsonKey(ignore: true)
@@ -2646,24 +2856,26 @@ class _$ShapeElement implements ShapeElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            PenProperty property, double rotation)
         pen,
-    required TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)
+    required TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)
         eraser,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             String text,
             LabelProperty property,
-            ElementConstraint constraint)
+            ElementConstraint constraint,
+            double rotation)
         label,
     required TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)
         image,
@@ -2671,6 +2883,7 @@ class _$ShapeElement implements ShapeElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)
@@ -2679,29 +2892,36 @@ class _$ShapeElement implements ShapeElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)
+            ShapeProperty property,
+            double rotation)
         shape,
   }) {
-    return shape(layer, firstPosition, secondPosition, property);
+    return shape(layer, firstPosition, secondPosition, property, rotation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -2709,6 +2929,7 @@ class _$ShapeElement implements ShapeElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -2717,29 +2938,37 @@ class _$ShapeElement implements ShapeElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
   }) {
-    return shape?.call(layer, firstPosition, secondPosition, property);
+    return shape?.call(
+        layer, firstPosition, secondPosition, property, rotation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String layer, List<PathPoint> points, PenProperty property)?
+    TResult Function(String layer, List<PathPoint> points, PenProperty property,
+            double rotation)?
         pen,
-    TResult Function(
-            String layer, List<PathPoint> points, EraserProperty property)?
+    TResult Function(String layer, List<PathPoint> points,
+            EraserProperty property, double rotation)?
         eraser,
-    TResult Function(String layer, @OffsetJsonConverter() Offset position,
-            String text, LabelProperty property, ElementConstraint constraint)?
+    TResult Function(
+            String layer,
+            @OffsetJsonConverter() Offset position,
+            String text,
+            LabelProperty property,
+            ElementConstraint constraint,
+            double rotation)?
         label,
     TResult Function(
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
             @Uint8ListJsonConverter() Uint8List pixels,
+            double rotation,
             int width,
             int height)?
         image,
@@ -2747,6 +2976,7 @@ class _$ShapeElement implements ShapeElement {
             String layer,
             @OffsetJsonConverter() Offset position,
             ElementConstraints? constraints,
+            double rotation,
             String data,
             double width,
             double height)?
@@ -2755,12 +2985,13 @@ class _$ShapeElement implements ShapeElement {
             String layer,
             @OffsetJsonConverter() Offset firstPosition,
             @OffsetJsonConverter() Offset secondPosition,
-            ShapeProperty property)?
+            ShapeProperty property,
+            double rotation)?
         shape,
     required TResult orElse(),
   }) {
     if (shape != null) {
-      return shape(layer, firstPosition, secondPosition, property);
+      return shape(layer, firstPosition, secondPosition, property, rotation);
     }
     return orElse();
   }
@@ -2821,7 +3052,8 @@ abstract class ShapeElement implements PadElement {
       {final String layer,
       @OffsetJsonConverter() final Offset firstPosition,
       @OffsetJsonConverter() final Offset secondPosition,
-      final ShapeProperty property}) = _$ShapeElement;
+      final ShapeProperty property,
+      final double rotation}) = _$ShapeElement;
 
   factory ShapeElement.fromJson(Map<String, dynamic> json) =
       _$ShapeElement.fromJson;
@@ -2833,6 +3065,8 @@ abstract class ShapeElement implements PadElement {
   @OffsetJsonConverter()
   Offset get secondPosition;
   ShapeProperty get property;
+  @override
+  double get rotation;
   @override
   @JsonKey(ignore: true)
   _$$ShapeElementCopyWith<_$ShapeElement> get copyWith =>

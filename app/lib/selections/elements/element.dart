@@ -49,7 +49,22 @@ class ElementSelection<T extends PadElement> extends Selection<Renderer<T>> {
                   .whereType<T>()
                   .toList());
         },
-      )
+      ),
+      ExactSlider(
+        value: selected.first.element.rotation,
+        header: Text(AppLocalizations.of(context)!.rotation),
+        max: 360,
+        min: 0,
+        defaultValue: 0,
+        onChangeEnd: (value) {
+          updateElements(
+              context,
+              selected
+                  .map((e) => e.element.copyWith(rotation: value))
+                  .whereType<T>()
+                  .toList());
+        },
+      ),
     ];
   }
 

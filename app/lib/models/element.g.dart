@@ -79,6 +79,7 @@ _$PenElement _$$PenElementFromJson(Map json) => _$PenElement(
           ? const PenProperty()
           : PenProperty.fromJson(
               Map<String, dynamic>.from(json['property'] as Map)),
+      rotation: (json['rotation'] as num?)?.toDouble() ?? 0,
       $type: json['type'] as String?,
     );
 
@@ -87,6 +88,7 @@ Map<String, dynamic> _$$PenElementToJson(_$PenElement instance) =>
       'layer': instance.layer,
       'points': instance.points.map((e) => e.toJson()).toList(),
       'property': instance.property.toJson(),
+      'rotation': instance.rotation,
       'type': instance.$type,
     };
 
@@ -101,6 +103,7 @@ _$EraserElement _$$EraserElementFromJson(Map json) => _$EraserElement(
           ? const EraserProperty()
           : EraserProperty.fromJson(
               Map<String, dynamic>.from(json['property'] as Map)),
+      rotation: (json['rotation'] as num?)?.toDouble() ?? 0,
       $type: json['type'] as String?,
     );
 
@@ -109,6 +112,7 @@ Map<String, dynamic> _$$EraserElementToJson(_$EraserElement instance) =>
       'layer': instance.layer,
       'points': instance.points.map((e) => e.toJson()).toList(),
       'property': instance.property.toJson(),
+      'rotation': instance.rotation,
       'type': instance.$type,
     };
 
@@ -126,6 +130,7 @@ _$LabelElement _$$LabelElementFromJson(Map json) => _$LabelElement(
           ? const ElementConstraint(size: 1000)
           : ElementConstraint.fromJson(
               Map<String, dynamic>.from(json['constraint'] as Map)),
+      rotation: (json['rotation'] as num?)?.toDouble() ?? 0,
       $type: json['type'] as String?,
     );
 
@@ -136,6 +141,7 @@ Map<String, dynamic> _$$LabelElementToJson(_$LabelElement instance) =>
       'text': instance.text,
       'property': instance.property.toJson(),
       'constraint': instance.constraint.toJson(),
+      'rotation': instance.rotation,
       'type': instance.$type,
     };
 
@@ -149,6 +155,7 @@ _$ImageElement _$$ImageElementFromJson(Map json) => _$ImageElement(
           : ElementConstraints.fromJson(
               Map<String, dynamic>.from(json['constraints'] as Map)),
       pixels: const Uint8ListJsonConverter().fromJson(json['pixels'] as String),
+      rotation: (json['rotation'] as num?)?.toDouble() ?? 0,
       width: json['width'] as int,
       height: json['height'] as int,
       $type: json['type'] as String?,
@@ -160,6 +167,7 @@ Map<String, dynamic> _$$ImageElementToJson(_$ImageElement instance) =>
       'position': const OffsetJsonConverter().toJson(instance.position),
       'constraints': instance.constraints?.toJson(),
       'pixels': const Uint8ListJsonConverter().toJson(instance.pixels),
+      'rotation': instance.rotation,
       'width': instance.width,
       'height': instance.height,
       'type': instance.$type,
@@ -174,6 +182,7 @@ _$SvgElement _$$SvgElementFromJson(Map json) => _$SvgElement(
           ? const ScaledElementConstraints(1)
           : ElementConstraints.fromJson(
               Map<String, dynamic>.from(json['constraints'] as Map)),
+      rotation: (json['rotation'] as num?)?.toDouble() ?? 0,
       data: json['data'] as String,
       width: (json['width'] as num).toDouble(),
       height: (json['height'] as num).toDouble(),
@@ -185,6 +194,7 @@ Map<String, dynamic> _$$SvgElementToJson(_$SvgElement instance) =>
       'layer': instance.layer,
       'position': const OffsetJsonConverter().toJson(instance.position),
       'constraints': instance.constraints?.toJson(),
+      'rotation': instance.rotation,
       'data': instance.data,
       'width': instance.width,
       'height': instance.height,
@@ -203,6 +213,7 @@ _$ShapeElement _$$ShapeElementFromJson(Map json) => _$ShapeElement(
           ? const ShapeProperty(shape: RectangleShape())
           : ShapeProperty.fromJson(
               Map<String, dynamic>.from(json['property'] as Map)),
+      rotation: (json['rotation'] as num?)?.toDouble() ?? 0,
       $type: json['type'] as String?,
     );
 
@@ -214,5 +225,6 @@ Map<String, dynamic> _$$ShapeElementToJson(_$ShapeElement instance) =>
       'secondPosition':
           const OffsetJsonConverter().toJson(instance.secondPosition),
       'property': instance.property.toJson(),
+      'rotation': instance.rotation,
       'type': instance.$type,
     };

@@ -115,7 +115,9 @@ class ViewPainter extends CustomPainter {
     canvas.translate(transform.position.dx, transform.position.dy);
     for (var renderer in cameraViewport.unbakedElements) {
       if (!invisibleLayers.contains(renderer.element.layer)) {
+        canvas.rotate(renderer.element.rotation);
         renderer.build(canvas, size, document, transform, false);
+        canvas.rotate(-renderer.element.rotation);
       }
     }
     canvas.restore();

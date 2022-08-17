@@ -48,16 +48,19 @@ abstract class PathElement {
 @Freezed(equal: false)
 class PadElement with _$PadElement {
   @Implements<PathElement>()
-  const factory PadElement.pen(
-      {@Default('') String layer,
-      @Default([]) List<PathPoint> points,
-      @Default(PenProperty()) PenProperty property}) = PenElement;
+  const factory PadElement.pen({
+    @Default('') String layer,
+    @Default([]) List<PathPoint> points,
+    @Default(PenProperty()) PenProperty property,
+    @Default(0) double rotation,
+  }) = PenElement;
 
   @Implements<PathElement>()
   const factory PadElement.eraser({
     @Default('') String layer,
     @Default([]) List<PathPoint> points,
     @Default(EraserProperty()) EraserProperty property,
+    @Default(0) double rotation,
   }) = EraserElement;
 
   const factory PadElement.label({
@@ -66,6 +69,7 @@ class PadElement with _$PadElement {
     @Default('') String text,
     @Default(LabelProperty()) LabelProperty property,
     @Default(ElementConstraint(size: 1000)) ElementConstraint constraint,
+    @Default(0) double rotation,
   }) = LabelElement;
 
   const factory PadElement.image({
@@ -73,6 +77,7 @@ class PadElement with _$PadElement {
     @OffsetJsonConverter() @Default(Offset.zero) Offset position,
     @Default(ScaledElementConstraints(1)) ElementConstraints? constraints,
     @Uint8ListJsonConverter() required Uint8List pixels,
+    @Default(0) double rotation,
     required int width,
     required int height,
   }) = ImageElement;
@@ -81,6 +86,7 @@ class PadElement with _$PadElement {
     @Default('') String layer,
     @OffsetJsonConverter() @Default(Offset.zero) Offset position,
     @Default(ScaledElementConstraints(1)) ElementConstraints? constraints,
+    @Default(0) double rotation,
     required String data,
     required double width,
     required double height,
@@ -91,6 +97,7 @@ class PadElement with _$PadElement {
     @OffsetJsonConverter() @Default(Offset.zero) Offset firstPosition,
     @OffsetJsonConverter() @Default(Offset.zero) Offset secondPosition,
     @Default(ShapeProperty(shape: RectangleShape())) ShapeProperty property,
+    @Default(0) double rotation,
   }) = ShapeElement;
 
   factory PadElement.fromJson(Map<String, dynamic> json) =>
